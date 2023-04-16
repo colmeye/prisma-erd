@@ -13,5 +13,8 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "mermaid": "^10.1.0"
   }
 }
