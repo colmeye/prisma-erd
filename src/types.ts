@@ -1,4 +1,5 @@
 export interface FieldInfo {
+  hasMany: boolean;
   name: string;
   optional: boolean;
   other?: string;
@@ -6,8 +7,14 @@ export interface FieldInfo {
 }
 
 export interface ParsedFieldData {
-  fieldInfo: FieldInfo;
-  relationshipInfo?: RelationshipInfo
+  name: string;
+  optional: boolean;
+  other?: string;
+  type: string;
+  fields?: string[];
+  hasMany: boolean;
+  otherModel?: string;
+  references?: string[];
 }
 
 export interface RelationshipInfo {
@@ -15,6 +22,6 @@ export interface RelationshipInfo {
   hasMany: boolean;
   optional: boolean;
   otherModel: string;
-  references: string[]; 
-  verb: string; 
+  references: string[];
+  verb: string;
 }

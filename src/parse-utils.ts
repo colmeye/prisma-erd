@@ -1,4 +1,4 @@
-import { ParsedFieldData } from "./types";
+import { ParsedFieldData } from './types';
 
 export function getModelName(modelData: string) {
   const nameMatch = modelData.match(/^model\s+(\w+)\s*{/);
@@ -18,22 +18,30 @@ export function parseFieldData(fieldData: string): ParsedFieldData {
 
   const [_, name, type, other] = fieldsMatch;
   const hasMany = type.endsWith('[]');
-  const optional = type.endsWith('?');
+  const optional = type.endsWith('?') || type.endsWith('[]');
   const normalizedType = type.replace('?', '').replace('[]', '');
 
+  let fields = undefined;
+  let references = undefined;
+
   try {
-    const { fields, references } = parseRelationshipDetails(fieldData);
-    return {
-      fieldInfo: { name, optional, other, type: normalizedType },
-      relationshipInfo: { verb: name, otherModel: normalizedType, fields, references, hasMany, optional },
-    }
+    const relationshipDetails = parseRelationshipDetails(fieldData);
+    fields = relationshipDetails.fields;
+    references = relationshipDetails.references;
+  } catch (e) {
+    // No relationship data found
+  }
 
-  } catch(e) {
-    return {
-      fieldInfo: { name, optional, other, type: normalizedType },
-    }
-
-  }  
+  return {
+    name,
+    optional,
+    other,
+    type: normalizedType,
+    otherModel: normalizedType,
+    fields,
+    references,
+    hasMany,
+  };
 }
 
 export function parseRelationshipDetails(fieldData: string) {
@@ -43,5 +51,5 @@ export function parseRelationshipDetails(fieldData: string) {
   const referencesMatch = fieldData.match(/references:\s*\[(\w+(?:,\s*\w+)*)\]/);
   if (!referencesMatch) throw new Error('References not found in relationship');
 
-  return { fields: fieldsMatch[1].split(', '), references: referencesMatch[1].split(', ') }
+  return { fields: fieldsMatch[1].split(', '), references: referencesMatch[1].split(', ') };
 }

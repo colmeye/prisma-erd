@@ -15,9 +15,14 @@ export default class Model {
     // Parse each line of the field data
     for (const fieldString of fieldStrings) {
       try {
-        const { fieldInfo, relationshipInfo } = parseFieldData(fieldString);
-        this.fieldInfo.push(fieldInfo);
-        if (relationshipInfo) this.relationshipInfo.push(relationshipInfo);
+        const { name, optional, other, type, otherModel, fields, references, hasMany } =
+          parseFieldData(fieldString);
+
+        this.fieldInfo.push({ hasMany, name, optional, other, type });
+
+        if (otherModel && fields && references) {
+          this.relationshipInfo.push({ fields, hasMany, optional, otherModel, references, verb: name });
+        }
       } catch (e) {
         continue;
       }
