@@ -5,16 +5,19 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "ts-node ./src/parse.ts"
+    "dev": "ts-node ./src/index.ts -f /src/schema.prisma",
+    "build": "pnpm exec webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.15.11",
-    "ts-node": "^10.9.1"
-  },
-  "dependencies": {
-    "mermaid": "^10.1.0"
+    "mermaid": "^10.1.0",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "webpack": "^5.79.0",
+    "webpack-cli": "^5.0.1"
   }
 }

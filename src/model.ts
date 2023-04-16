@@ -1,5 +1,5 @@
-import { getModelName, getModelFields, parseFieldData } from './parse-utils.ts';
-import { FieldInfo, RelationshipInfo } from './types.ts';
+import { getModelName, getModelFields, parseFieldData } from './parse-utils';
+import { FieldInfo, RelationshipInfo } from './types';
 
 export default class Model {
   public name: string;

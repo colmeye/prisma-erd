@@ -1,14 +1,23 @@
 import * as fs from 'fs';
-import Model from './model.ts';
-import { createAttributeBox, writeDiagramToFile } from './mermaid-utils.ts';
+import Model from './model';
+import { createAttributeBox, writeDiagramToFile } from './mermaid-utils';
+
+// Read schema file
+// ------------------------------
+if (process.argv.length === 2) {
+  console.error('Expected at least one argument!');
+  process.exit(1);
+}
 
 const content = fs.readFileSync(process.cwd() + '/src/schema.prisma').toString();
 
-// Find the models within the schema.prisma file
+// Find models in the file
+// ------------------------------
 const models = content.match(/model\s+\w+\s+\{[\s\S]*?\}/g);
 if (!models) throw new Error('No models found in schema.prisma file');
 
-// Instantiate a class for each found model
+// Parse the found models
+// ------------------------------
 const modelInstances: { [key: string]: Model } = {};
 
 for (const model of models) {
@@ -17,6 +26,7 @@ for (const model of models) {
 }
 
 // Create mermaid diagram
+// ------------------------------
 let mermaidDiagram = 'erDiagram\n';
 
 for (const modelName in modelInstances) {
