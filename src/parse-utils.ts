@@ -25,7 +25,7 @@ export function parseFieldData(fieldData: string): ParsedFieldData {
     const { fields, references } = parseRelationshipDetails(fieldData);
     return {
       fieldInfo: { name, optional, other, type: normalizedType },
-      relationshipInfo: { verb: name, fields, references, hasMany, optional },
+      relationshipInfo: { verb: name, otherModel: normalizedType, fields, references, hasMany, optional },
     }
 
   } catch(e) {

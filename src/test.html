@@ -8,7 +8,6 @@
           string role
           string posts
   }
-  User }|--|{ Post : has
   Post {
           string id
           string createdAt
@@ -18,7 +17,7 @@
           string author
           string authorId
   }
-  Post }|--|{ User : has
+  Post }|--|{ User : author
   
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>

@@ -11,9 +11,10 @@ export interface ParsedFieldData {
 }
 
 export interface RelationshipInfo {
-  verb: string; 
   fields: string[];
-  references: string[]; 
   hasMany: boolean;
   optional: boolean;
+  otherModel: string;
+  references: string[]; 
+  verb: string; 
 }
