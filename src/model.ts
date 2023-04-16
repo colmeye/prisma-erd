@@ -1,26 +1,33 @@
+import { getModelName, getModelFields, parseFieldInfo } from './parse-utils.ts';
+
 interface Field {
   name: string;
   type: string;
+  optional: boolean;
+  other?: string;
 }
 
 export default class Model {
   public name: string;
-  // public fields: Field[];
+  public fields: Field[] = [];
 
-  constructor(data: string) {
-    // Get the name of the model
-    const nameMatch = data.match(/^model\s+(\w+)\s*{/);
-    if (!nameMatch || !nameMatch.length) throw new Error('Model has no name?');
-    this.name = nameMatch[1];
+  constructor(modelData: string) {
+    this.name = getModelName(modelData);
 
-    // Get the fields of the model
-    const fieldDataMatch = data.match(/{([\s\S]+?)}/);
-    if (!fieldDataMatch || !fieldDataMatch.length) return;
-    const fieldData = fieldDataMatch[1];
+    const fieldData = getModelFields(modelData) ?? '';
+    const fieldStrings = fieldData.split('\n');
 
-    const fieldsMatch = fieldData.match(/(\S+)\s+(\S+\??)(?:\s+(\S+(?:\s+\[.*?\]))+)?/) ?? [];
-    const field = [fieldsMatch[1], fieldsMatch[2], fieldsMatch[3]];
+    // Parse each line of the field data
+    for (const fieldString of fieldStrings) {
+      let parsedFieldInfo: Field;
 
-    console.log(field);
+      try {
+        parsedFieldInfo = parseFieldInfo(fieldString);
+      } catch (e) {
+        continue;
+      }
+
+      this.fields.push(parsedFieldInfo);
+    }
   }
 }

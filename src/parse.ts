@@ -10,4 +10,5 @@ if (!models || !models.length) throw new Error('No models found in schema.prisma
 // Instantiate a class for each found model
 for (const model of models) {
   const modelInstance = new Model(model);
+  console.log(modelInstance);
 }
