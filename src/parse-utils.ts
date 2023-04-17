@@ -13,7 +13,7 @@ export function getModelFields(modelData: string) {
 }
 
 export function parseFieldData(fieldData: string): ParsedFieldData {
-  const fieldsMatch = fieldData.match(/(\w+)\s+(\S+)\s+(.*)/);
+  const fieldsMatch = fieldData.match(/(\w+)\s+(\S+)(?:\s+(.*))?/);
   if (!fieldsMatch) throw new Error('No field data found');
 
   const [_, name, type, other] = fieldsMatch;
