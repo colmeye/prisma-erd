@@ -9,7 +9,10 @@ if (process.argv.length === 2) {
   process.exit(1);
 }
 
-const content = fs.readFileSync(process.cwd() + '/src/schema.prisma').toString();
+const inputFilePath = process.argv[2];
+const outputFilePath = process.argv[3] ?? './';
+
+const content = fs.readFileSync(inputFilePath).toString();
 
 // Find models in the file
 // ------------------------------
@@ -51,6 +54,6 @@ for (const modelName in modelInstances) {
   }
 }
 
-writeDiagramToFile(mermaidDiagram);
+writeDiagramToFile(mermaidDiagram, outputFilePath);
 
 console.log('ERD created succesfully!');

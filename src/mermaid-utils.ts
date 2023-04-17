@@ -13,7 +13,7 @@ export function createAttributeBox(modelInstance: Model) {
   return attributeBoxString;
 }
 
-export function writeDiagramToFile(mermaidDiagram: string) {
+export function writeDiagramToFile(mermaidDiagram: string, outputFilePath: string) {
   const html = `
     <!DOCTYPE html>
     <div class="mermaid">
@@ -25,5 +25,5 @@ export function writeDiagramToFile(mermaidDiagram: string) {
     </script>
   `;
 
-  fs.writeFileSync(process.cwd() + '/src/erd.html', html);
+  fs.writeFileSync(outputFilePath + '/erd.html', html);
 }
