@@ -1,6 +1,6 @@
 {
   "name": "prisma-erd",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "pnpm build && node bin/bundle.cjs ./schema.prisma",
@@ -10,14 +10,21 @@
   "bin": {
     "prisma-erd": "bin/bundle.cjs"
   },
+  "files": [
+    "bin"
+  ],
   "keywords": [
     "prisma",
     "erd",
     "mermaid",
     "diagram"
   ],
-  "author": "",
+  "author": "colmeye",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colmeye/prisma-erd"
+  },
   "devDependencies": {
     "@types/node": "^18.15.11",
     "mermaid": "^10.1.0",
