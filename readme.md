@@ -2,6 +2,12 @@
 
 A lightweight package that generates an ERD from a prisma schema.
 
+## Install
+
+```
+npm install -D prisma-erd
+```
+
 ## Usage
 
 Run a single command to create an HTML file containing a graph of your schema:
