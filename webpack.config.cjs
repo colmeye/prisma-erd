@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index.ts',
   mode: 'production',
+  target: 'node',
   module: {
     rules: [
       {
@@ -15,11 +16,11 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     fallback: {
-      "fs": false
+      fs: false,
     },
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle.cjs',
     path: path.resolve(__dirname, 'dist'),
   },
 };

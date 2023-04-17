@@ -6,5 +6,6 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "lib": ["esnext"]
+  "lib": ["esnext"],
+  "include": ["src/*"]
 }

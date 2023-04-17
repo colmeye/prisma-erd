@@ -1,11 +1,9 @@
 {
   "name": "prisma-erd",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "ts-node-esm ./src/index.ts -f /src/schema.prisma",
+    "dev": "pnpm exec ts-node-esm ./src/index.ts -f /src/schema.prisma",
     "build": "pnpm exec webpack"
   },
   "keywords": [],
