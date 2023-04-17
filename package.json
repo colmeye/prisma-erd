@@ -6,7 +6,12 @@
     "dev": "pnpm exec ts-node-esm ./src/index.ts -f /src/schema.prisma",
     "build": "pnpm exec webpack"
   },
-  "keywords": [],
+  "keywords": [
+    "prisma",
+    "erd",
+    "mermaid",
+    "diagram"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
