@@ -5,8 +5,7 @@ export function createAttributeBox(modelInstance: Model) {
   let attributeBoxString = `${modelInstance.name} {\n`;
 
   for (const field of Object.values(modelInstance.fieldInfo)) {
-    // TODO: Support types
-    attributeBoxString += `\tstring ${field.name}\n`;
+    attributeBoxString += `\t${field.type} ${field.name}\n`;
   }
 
   attributeBoxString += '}\n';

@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm exec ts-node-esm ./src/index.ts ./schema.prisma",
-    "build": "pnpm exec webpack"
+    "build": "pnpm exec webpack",
+    "build:install": "pnpm build && npm install -g",
+    "dev": "pnpm build && node bin/bundle.cjs ./schema.prisma"
+  },
+  "bin": {
+    "prisma-erd": "bin/bundle.cjs"
   },
   "keywords": [
     "prisma",

@@ -1,9 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.ts',
   mode: 'production',
   target: 'node',
+  plugins: [new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true })],
   module: {
     rules: [
       {
@@ -21,6 +23,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.cjs',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'bin'),
   },
 };
