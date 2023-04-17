@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm exec ts-node-esm ./src/index.ts -f /src/schema.prisma",
+    "dev": "pnpm exec ts-node-esm ./src/index.ts -f ./schema.prisma",
     "build": "pnpm exec webpack"
   },
   "keywords": [
