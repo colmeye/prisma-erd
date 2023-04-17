@@ -5,12 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "ts-node ./src/index.ts -f /src/schema.prisma",
+    "dev": "ts-node-esm ./src/index.ts -f /src/schema.prisma",
     "build": "pnpm exec webpack"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.15.11",
     "mermaid": "^10.1.0",

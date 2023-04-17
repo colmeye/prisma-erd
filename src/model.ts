@@ -18,10 +18,11 @@ export default class Model {
         const { name, optional, other, type, otherModel, fields, references, hasMany } =
           parseFieldData(fieldString);
 
-        this.fieldInfo.push({ hasMany, name, optional, other, type });
-
+        // Determine if this is a relationship or a field
         if (otherModel && fields && references) {
           this.relationshipInfo.push({ fields, hasMany, optional, otherModel, references, verb: name });
+        } else {
+          this.fieldInfo.push({ hasMany, name, optional, other, type });
         }
       } catch (e) {
         continue;

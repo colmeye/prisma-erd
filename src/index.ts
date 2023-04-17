@@ -52,3 +52,5 @@ for (const modelName in modelInstances) {
 }
 
 writeDiagramToFile(mermaidDiagram);
+
+console.log('ERD created succesfully!');
