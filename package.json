@@ -1,6 +1,6 @@
 {
   "name": "prisma-erd",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "pnpm build && node bin/bundle.cjs ./schema.prisma",
